@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <style>
+      .header{
+    background-color: #E3E6F3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 5rem;    /* 20px 80px */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    z-index: 999;
+    position:sticky;
+    top: 0;
+    left: 0;
+}
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar li{
+    list-style: none;
+    /* padding-left: 1.125rem; */
+    padding: 0 1.125rem;   /* 18px  */
+    position: relative;
+}
+
+.navbar li a{
+    text-decoration: none;
+    font-size: 1rem;          /* 16px  */
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+
+.navbar li a:hover,
+.navbar li a.active{
+    color: var(--green);
+}
+
+.navbar li a.active::after,
+.navbar li a:hover::after{
+    content: "";
+    width:30%;
+    height: 0.125rem;     /* 2px  */
+    background-color: var(--green);
+    position: absolute;
+    bottom: -0.25rem;     /* 4px  */
+    left: 1.25rem;          /* 20px  */
+}
+    </style>
+</head>
+    <body>
+        <header class="header">
+            <a href="#"><img src="img/logo.png" alt="logo" /></a>
+            <nav>
+                <ul class="navbar">
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="mobile">
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div>
+        </header>
+   
+   <script>
+    const navbarLinks = document.querySelectorAll('.navbar li a');
+navbarLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navbarLinks.forEach(navLink => navLink.classList.remove('active'));
+        link.classList.add('active');
+    });
+});
+
+   </script>
+    
+   
+</body>
+</html>
